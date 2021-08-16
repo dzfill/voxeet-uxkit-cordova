@@ -1,21 +1,16 @@
-# Voxeet UXKit Cordova
+Instructions on how to use the Voxeet Cordova plugin.
 
-## SDK License agreement
+# cordova-plugin-voxeet
 
-Before using the UXKit for Cordova, please review and accept the [Dolby Software License Agreement](SDK_LICENSE.md).
+This plugin bridges the Voxeet Toolkit and ConferenceKit calls. Wait for the `deviceReady` event before you interact with the plugin.
 
-## Release Notes
-
-Read the [release notes](RELEASENOTES.md) for this project.
-
-## Installation
-
-Before installation, add the iOS and/or Android platforms to your Cordova application. Open a terminal in the `src-cordova` folder and run the following commands:
+Before  installation, add the iOS and/or Android platforms to your Cordova application. Open a terminal in the `src-cordova` folder and run the following commands:
 
 ```bash
 cordova platform add ios
 cordova platform add android
 ```
+## Installation
 
 Install the UXKit for Cordova using the following command:
 
@@ -30,18 +25,18 @@ cordova plugin add cordova-plugin-voxeet \
     --variable VOXEET_CORDOVA_CONSUMER_KEY="consumerKey" \
     --variable VOXEET_CORDOVA_CONSUMER_SECRET="consumerSecret"
 ```
-
-> **Note:** Wait for the `deviceReady` event before you interact with the plugin.
-
+**Note:** Wait for the `deviceReady` event before you interact with the plugin.
 ### Installation on iOS
 
-1. Make sure that the cordova platform add ios is in the project root folder.
-1. In Xcode, set the value of the ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES build settings to true.
-1. To enable VoIP notification, follow the [Swift UXKit guide](https://dolby.io/developers/interactivity-apis/client-ux-kit/uxkit-voxeet-swift).
+**1.** Make sure that the cordova platform add ios is in the project root folder.
+
+**2.** In Xcode, set the value of the `ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES` build settings to true.
+
+**3.** To enable VoIP notification, follow the [Swift UXKit guide](doc:uxkit-voxeet-swift).
 
 ### Installation on Android
 
-Edit the `AndroidManifest.xml` file and put the following xml node in the :
+Edit the `AndroidManifest.xml` file and put the following xml node in the _<application></application>_:
 
 ```xml
 <meta-data
@@ -133,7 +128,7 @@ fetch(tokenUrl)
 **Initialize the Voxeet UXKit using the Consumer Key and Consumer Secret**
 
 > **WARNING:** It is a best practice to use the `VoxeetSDK.initializeToken` function to initialize the SDK.  
-> Please see the [Initializing](https://dolby.io/developers/interactivity-apis/client-sdk/initializing) document.
+> Please see the [Initializing]() document.
 
 ```javascript
 const consumerKey = "CONSUMER_KEY";
@@ -272,7 +267,7 @@ To start a conference using a built-in receiver or a built-in receiver speaker, 
 await VoxeetSDK.defaultBuiltInSpeaker(true);
 ```
 
-To enable a video, use the `defaultVideo` method (as in the example below). By default, the conference starts without a video. Change the value to true if you wish to enable video conferencing.
+To enable a video, use the defaultVideo method (as in the example below). By default, the conference starts without a video. Change the value to true if you wish to enable video conferencing.
 
 ```javascript
 await VoxeetSDK.defaultVideo(true);
@@ -291,4 +286,26 @@ const callback = (event: ConferenceStatusUpdated) => {
 };
 
 await VoxeetSDK.onConferenceStatusUpdatedEvent(callback);
+```
+### Supported Platforms
+
+- iOS
+- Android
+
+### License
+
+```
+   Copyright 2020 - Voxeet
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
 ```
